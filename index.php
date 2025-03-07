@@ -1,44 +1,26 @@
 <?php
-// comments are this way
 
-/*
-    multi line comment
-*/
+class Box {
+    public $width;
+    public $height;
+    public $length;
 
-//echo 'Hello world';
-
-$var = 'Kaspar'; // string
-$var = 4; // int
-$var = 3.4; // float
-$var = true; // bool
-$var = false; // bool
-$var = null; // null
-$var = ['hello', 2, 4, true]; // array
-$var = new StdClass(); // object
-var_dump($var);
-$var = ['hello', 2, 4, true];
-foreach($var as $key=>$value){
-    var_dump($key);
+    public function volume(){
+        return $this->width * $this->height * $this->length;
+    }
 }
 
-$var = [
-    'name' => 'Kaspar',
-    'age' => 32,
-    'hasCat' => true,
-    43,
-    'asdasd',
-    true
-];
+$box1 = new Box();
+$box1->width = 10;
+$box1->height = 20;
+$box1->length = 30;
+var_dump($box1);
+var_dump($box1->volume());
 
-var_dump($var);
-var_dump($var[0]);
-var_dump($var['name']);
-
-function hello($name){
-    echo 'hello ' . $name; // text concatinate is with . not with +
-}
-
-hello('Kaspar');
-
-$name = 'Martin';
-echo "dont be an a** \n $name";
+$box2 = new Box();
+$box2->width = 40;
+$box2->height = 50;
+$box2->length = 60;
+var_dump($box2);
+var_dump($box2->volume());
+var_dump($box1);

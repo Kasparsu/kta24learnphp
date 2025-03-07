@@ -10,19 +10,13 @@ class Box {
     }
 }
 
-// $memory = [{h:2}, <- pos 0];
+class MetalBox extends Box {
+    public $weightPerUnit;
+    public $material = 'Metal';
+    public function mass(){
+        return $this->volume() * $this->weigthPerUnit;
+    }
+}
 
-$var1 = 1;
-$var2 = $var1;
-$var2 = 2;
-var_dump($var1);
-
-
-$box1 = new Box();
-$box1->height = 1;
-$box2 = clone $box1;
-$box2->height = 2;
-
-var_dump($box1->height);
+$box1 = new MetalBox();
 var_dump($box1);
-var_dump($box2);

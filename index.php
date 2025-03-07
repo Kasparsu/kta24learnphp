@@ -1,43 +1,36 @@
 <?php
+class Cat {
+    use HasWeight;
+}
 
-class Box {
-    public $width;
-    protected $height;
-    private $length;
+class Gun {
+    use HasWeight, HasAmmo;
+}
 
-    public function setLength(int $length) {
-        $this->length = $length;
-        if($length < 0) {
-            $this->length = 0;
+class CrossBow {
+    use HasAmmo;
+}
+
+trait HasAmmo {
+    public $ammo;
+}
+
+trait HasWeight {
+    private $weight;
+
+    public function getWeight(){
+        return $this->weight;
+    }
+
+    public function setWeight(int $weight){
+        $this->weight = $weight;
+        if($weight < 0){
+            $this->weight = 0;
         }
     }
-    
-    public function getLength() {
-        return $this->length;
-    }
-
-    public function volume(){
-        return $this->width * $this->height * $this->length;
-    }
-    public function visiblity(){
-        $this->length = 2;
-        var_dump($this->length);
-    }
 }
 
-class MetalBox extends Box {
-    public $weightPerUnit;
-    public $material = 'Metal';
-    public function mass(){
-        return $this->volume() * $this->weigthPerUnit;
-    }
-    public function childVisiblity(){
-        //$this->length = 2;
-        var_dump($this->length);
-    }
-}
-
-$box1 = new MetalBox();
-$box1->setLength(23);
-$box1->volume();
-var_dump($box1);
+$cat = new Cat();
+$gun = new Gun();
+$crossbow = new CrossBow();
+var_dump($cat, $gun, $crossbow);

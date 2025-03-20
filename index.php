@@ -1,44 +1,19 @@
 <?php
-
-class Person {
-    private $name;
-    private $age;
-    public function __construct($name, $age){
-        var_dump('object created');
-        $this->name = $name;
-        $this->age = $age;
-    }
-    
-    public function __invoke(...$args){
-        var_dump($args);
-    }
-
-    public function __call($name, $args){
-        var_dump($name, $args);
-    }
-
-    public function __set($name, $value){
-        var_dump($name, $value);
-    }
-
-    public function __get($name){
-        var_dump($name);
-        return 'some value';
-    }
-
-    public function __toString(){
-        return "Person is $this->age old and has a name of $this->name";
-    }
-
-    public function __destruct(){
-        var_dump('object destroyed');
-    }
-}
-
-$person = new Person('Kaspar', 31);
-$person->gender = 'Male';
-var_dump($person->weight);
-$person->notexists(1, 'lol', 'still works');
-echo $person;
-$person('asdas');
-var_dump($person);
+$name = 'Kaspar';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello <?=$name?></h1>
+    <ul>
+        <?php for($i=0; $i<10; $i++): ?>
+            <li>Item <?=$i?></li>
+        <?php endfor ?>
+    </ul>    
+</body>
+</html>

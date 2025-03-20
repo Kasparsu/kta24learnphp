@@ -1,32 +1,44 @@
 <?php
 
 class Person {
-    public $name;
-    public static $count;
-
-    public static function example(){
-        var_dump(static::$count);
-        var_dump(static::class);
-        var_dump(self::class);
+    private $name;
+    private $age;
+    public function __construct($name, $age){
+        var_dump('object created');
+        $this->name = $name;
+        $this->age = $age;
+    }
+    
+    public function __invoke(...$args){
+        var_dump($args);
     }
 
-    public function getCount(){
-        var_dump(static::$count);
+    public function __call($name, $args){
+        var_dump($name, $args);
+    }
+
+    public function __set($name, $value){
+        var_dump($name, $value);
+    }
+
+    public function __get($name){
+        var_dump($name);
+        return 'some value';
+    }
+
+    public function __toString(){
+        return "Person is $this->age old and has a name of $this->name";
+    }
+
+    public function __destruct(){
+        var_dump('object destroyed');
     }
 }
 
-class Client extends Person {
-    public static $count = 30;
-}
-
-$person = new Person();
-$person->getCount();
-
-Person::$count = 1;
-
-Person::$count = 2;
-
-Person::example();
-Client::example();
-
-var_dump(Person::$count, Person::$count);
+$person = new Person('Kaspar', 31);
+$person->gender = 'Male';
+var_dump($person->weight);
+$person->notexists(1, 'lol', 'still works');
+echo $person;
+$person('asdas');
+var_dump($person);

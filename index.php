@@ -1,42 +1,32 @@
 <?php
-// Programmer 1 code
-class Job {
-    public function task(Logger $logger){
-        for($i=0;$i<10;$i++){
-            // some task
-            
-            $logger->log("Task done: #$i");
-        }
+
+class Person {
+    public $name;
+    public static $count;
+
+    public static function example(){
+        var_dump(static::$count);
+        var_dump(static::class);
+        var_dump(self::class);
+    }
+
+    public function getCount(){
+        var_dump(static::$count);
     }
 }
 
-class ConsoleLogger implements Logger {
-    public function log($text){
-        echo "$text\n";
-    }
-}
-class FileLogger implements Logger {
-    public function log($text){
-        $file = fopen('./log.txt', 'a');
-        fwrite($file, "$text\n");
-        fclose($file);
-    }
+class Client extends Person {
+    public static $count = 30;
 }
 
-interface Logger {
-    public function log($text);
-}
+$person = new Person();
+$person->getCount();
 
-// Programmer 2 code
+Person::$count = 1;
 
-class NothingLogger implements Logger {
-    public function log($text){
-       
-    }
-}
+Person::$count = 2;
 
-$job = new Job();
-$logger = new ConsoleLogger();
-$logger = new FileLogger();
-$logger = new NothingLogger();
-$job->task($logger);
+Person::example();
+Client::example();
+
+var_dump(Person::$count, Person::$count);

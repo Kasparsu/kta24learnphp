@@ -13,7 +13,6 @@ spl_autoload_register(function ($class) {
 
 require 'helpers.php';
 require 'routes.php';
-
 $router = new App\Router($_SERVER['REQUEST_URI']);
 $match = $router->match();
 if($match){

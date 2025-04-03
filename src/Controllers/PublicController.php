@@ -24,4 +24,14 @@ class PublicController {
         ];
         include 'views/us.php';
     }
+
+    public function form(){
+        $name = $_GET['name'] ?? null;
+        $age = $_GET['age'] ?? null;
+        include 'views/form.php';
+    }
+
+    public function answer(){
+        dump($_GET);
+    }
 }

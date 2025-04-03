@@ -7,15 +7,18 @@ if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $_SERVER["REQUEST_URI"])) {
 spl_autoload_register(function ($class) {
     $parts = explode('\\', $class);
     array_shift($parts);
-    $class = implode($parts);
+    $class = implode('/', $parts);
     require_once "src/$class.php";
 });
 
-// autoloading not explained fully (folders), Namespaces explain!
 
-$router = new App\Router();
+use App\Controllers\Router as CRouter;
+use App\Router;
+
+$router = new Router();
+$router2 = new CRouter();
 $db = new App\DB();
-var_dump($router, $db);
+var_dump($router,$router2, $db);
 
 
 // switch($_SERVER['REQUEST_URI']){

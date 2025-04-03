@@ -32,6 +32,12 @@ class PublicController {
     }
 
     public function answer(){
+        dump($_GET, $_POST);
+    }
+
+    public function getAnswer(){
         dump($_GET);
     }
 }
+
+

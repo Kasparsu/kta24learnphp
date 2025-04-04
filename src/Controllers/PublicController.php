@@ -8,6 +8,11 @@ use App\Models\User;
 
 class PublicController {
     public function index() {
+        
+        //setcookie('mycookie', 'tasty', time()+60*60*24*30, null, null, true, false);
+        //dump($_COOKIE);
+        //$_SESSION['id'] = 32;
+        //dump($_SESSION);
         $posts = Post::all();
         $heroTitle = 'World news';        
         include 'views/index.php';
@@ -26,6 +31,7 @@ class PublicController {
     }
 
     public function answer(){
+        dump($_REQUEST);
         dump($_GET, $_POST);
     }
 

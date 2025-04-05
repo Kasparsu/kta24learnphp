@@ -28,7 +28,9 @@ class DB {
     }
 
     public function find($table, $class, $id) {
-        $stmt = $this->conn->prepare("SELECT * FROM $table WHERE id=$id");
+        $sql = "SELECT * FROM $table WHERE id=$id";
+        
+        $stmt = $this->conn->prepare($sql);
         $stmt->execute();
 
         // set the resulting array to associative

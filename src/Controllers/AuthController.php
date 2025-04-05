@@ -19,7 +19,7 @@ class AuthController {
             try {
                 $user = new User();
                 $user->email = $email;
-                $user->password = $password;
+                $user->password = password_hash(md5($user->email . $password . '5baa61e4c9b93f3'), PASSWORD_BCRYPT, ['cost' => 12]);
                 $user->save();
                 redirect('/login');
                 return;
@@ -43,7 +43,7 @@ class AuthController {
         }
         $users = User::where('email', $email);
         $user = $users[0] ?? null;
-        if($user && $user->password === $password) {
+        if($user && password_verify(md5($user->email . $password . '5baa61e4c9b93f3'), $user->password)) {
             $_SESSION['userId'] = $user->id;
             redirect('/');
             return;         
@@ -51,7 +51,7 @@ class AuthController {
         redirect('/login');
     }
 
-    public function logout(){
+    public function logout() {
         unset($_SESSION['userId']);
         redirect('/');
     }

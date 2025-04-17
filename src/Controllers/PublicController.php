@@ -14,6 +14,7 @@ class PublicController {
         //$_SESSION['id'] = 32;
         //dump($_SESSION);
         $posts = Post::all();
+        dd($posts);
         $heroTitle = 'World news';        
         include 'views/index.php';
     }

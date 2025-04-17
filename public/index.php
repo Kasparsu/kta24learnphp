@@ -8,12 +8,7 @@ session_start([
     'cookie_httponly' => true
 ]);
 
-spl_autoload_register(function ($class) {
-    $parts = explode('\\', $class);
-    array_shift($parts);
-    $class = implode('/', $parts);
-    require_once "src/$class.php";
-});
+require 'vendor/autoload.php';
 
 require 'helpers.php';
 require 'routes.php';

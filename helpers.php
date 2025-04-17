@@ -2,11 +2,11 @@
 
 use App\Models\User;
 
-function dump(...$vars){
-    echo '<pre>';
-    var_dump(...$vars);
-    echo '</pre>';
-}
+// function dump(...$vars){
+//     echo '<pre>';
+//     var_dump(...$vars);
+//     echo '</pre>';
+// }
 
 function redirect($path) {
     header("Location: $path");
